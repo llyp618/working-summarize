@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			width: 600px;
+			margin: 0 auto;
+		}
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		.boxA {
+			width: 400px;
+			height: 400px;
+			border: 20px solid #ddd;
+			position: relative;
+			margin-left: 20px;
+			padding: 20px;
+		}
+
+		.boxB {
+			width: 100px;
+			height: 100px;
+			border: 10px solid #ccc;
+			padding-left: 20px;
+			background-color: red ;
+			position: absolute;
+			left: 50px;
+			top: 50px;
+			margin-left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="boxA">
+		<div class="boxB" id="boxB">
+			
+		</div>
+	</div>
+	<script>
+		var boxB = document.querySelector('#boxB');
+		
+		console.log(boxB.offsetLeft); // 100   子元素相对具有定位属性的父级元素的左边距 如果没有 则相对 document
+
+		console.log(boxB.style.left); // '' 行内样式 
+
+		console.log(window.getComputedStyle(boxB,null).left);  //50px 绝对定位元素设置的left
+
+		console.log(boxB.clientLeft); // 10   元素边框的宽度 无法用来获取位置
+
+		console.log(boxB.getBoundingClientRect().left);  // 140 返回相对 document 边界的边距
+	</script>
+</body>
+</html>

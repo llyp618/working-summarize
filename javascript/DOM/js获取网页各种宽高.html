@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			width:600px;
+			margin: 0 auto;
+			height: 1000px;
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	2
+	<script type="text/javascript">
+		console.log(document.body.clientWidth)   //600  网页可见宽度  即设置的body宽度
+
+		console.log(document.body.offsetWidth)   //602
+
+		console.log(document.documentElement.clientWidth)     // 1920 document 文档宽度，始终与浏览器窗口一样
+
+		console.log(document.documentElement.offsetWidth)     // 1920
+
+		console.log(window.innerWidth,window.innerHeight);                      // innerWidth innerHeight 浏览器可视区宽高 不包括工具栏 导航栏
+
+		console.log(window.outerWidth,window.outerHeight);                      // outerWidth outerHeight  整个浏览器宽高 包括工具栏 导航栏
+
+		console.log(window.screen.availHeight,window.screen.availWidth);         // 显示屏幕可用区域的宽高
+
+		console.log(document.documentElement.scrollTop,document.body.scrollTop,window.pageYOffset);  // 0 340 340 ; *滚动后测试*  chrome测试结果
+
+		
+	</script>
+</body>
+</html>

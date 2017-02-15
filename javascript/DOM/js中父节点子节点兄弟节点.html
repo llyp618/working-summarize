@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2">
+			<div id="box4">
+				
+			</div>
+		</div>
+		<div id="box3">
+			
+		</div>
+	</div>
+	<script>
+		var oBox1 = document.getElementById('box1');
+
+		console.log(oBox1.childNodes);  //[text,div#box2,text,div#box3,text]    NodeList[5]   包含了空得文本节点
+
+		console.log(oBox1.children); //[div#box2, div#box3, box2: div#box2, box3: div#box3]  HTMLCollection[2] 包含所有子元素节点
+
+		console.log(oBox1.firstChild); // #text
+
+		console.log(oBox1.lastChild); // #text
+
+		console.log(oBox1.firstElementChild);  /*<div id="box2">
+																							<div id="box4">
+																								
+																							</div>
+																						</div>*/
+
+		console.log(oBox1.lastElementChild); 	/*<div id="box3">
+																						</div>*/																			
+
+    var oBox2 = document.getElementById('box2');
+
+		console.log(oBox2.parentNode);    /* <div id="box1">
+																					<div id="box2">
+																						<div id="box4">
+																						</div>
+																					</div>
+																					<div id="box3">
+																					</div>
+																				</div>*/
+
+		console.log(oBox2.nextSibling);   // #text 
+
+		console.log(oBox2.previousSibling); // #text		
+
+
+
+		// 在document中 空格换行也是 文本节点 
+
+	</script>
+</body>
+</html>

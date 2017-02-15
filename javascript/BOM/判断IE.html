@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<!--[if lte IE 9]> 用于 IE9或更低版本  条件注释<![endif]-->
+
+
+
+
+	<script>
+		// 可以根据navigator的信息来判断
+		/* 1 */
+		var browser = navigator.appName;    //IE 下显示"Microsoft Internet Explorer"
+		if (browser == "Microsoft Internet Explorer") {
+			var browser_version = navigator.appVersion.split(";")[1]; //显示IE 版本  MSIE 6.0 ,MSIE 7.0 ,MSIE 8.0 ,MSIE 9.0	
+			var ieN = parseInt(browser_version.match(/\d+/));  //IE 版本号码
+			if( ieN < 9 ) {
+				alert('请使用IE9以上浏览器！');
+			}
+		}
+
+		/* 2 */
+		if(window.ActiveXObject){
+			var ua = navigator.userAgent.toLowerCase();
+			ieN = ua.match(/msie ([\d.]+)/)[1]
+			if(ieN < 9){
+				alert('请使用IE9以上浏览器！');
+			}
+		}
+
+	</script>
+</body>
+</html>

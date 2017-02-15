@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		console.log(window.navigator.userAgent);
+
+		/* 判断移动设备和PC桌面*/
+		var isDesktop = window.navigator['userAgent'].match(/(ipad|iphone|ipod|android|windows phone|BB10|BlackBerry|PlayBook)/i) ? false : true;
+		console.log(isDesktop);
+	</script>
+</body>
+</html>

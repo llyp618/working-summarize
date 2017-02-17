@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 从setTimeout setInterval 来理解浏览器线程机制，javascript异步回调机制
+		// 先看例子:
+		
+		for ( var i = 0 ; i < 10 ; i++ ) {
+			setTimeout(function(){
+				console.log(i);
+			},0)
+		}
+		//输出结果为10个10，为什么呢？
+		
+		//解析：
+		//知识点1：for循环是一个代码块 不会创建新的作用域（上下文）因此 变量i的声明会在全局对象window下创建 试试 console.log(i) 
+		//				setTimeout回调函数上下文作用域是window
+		//
+		//知识点2：setTimeout会开启新的浏览器线程，javascript是单线程的，但浏览器不是。
+		//				setTimeout所在线程会在计时结束时，会被事件轮询（event loop）检测到，将回调函数插入到javascript主线程队列末尾以等待执行 因此在回调
+		//				所以这里的时间参数，是回调函数 延迟插入队列的时间，并不是回调函数延迟执行的时间，如果主线程前面队列有阻塞的代码执行，回调函数会继续等待。
+		//				只不过我们平时开发代码执行不复杂，未出现堵塞情况，因此往往在插入回队列时，主线程队列已经执行完。
+		//				
+		//知识点3：浏览器环境开启异步回调常用的就是 setTimeout setInterval XMLHttpRequest(ajax) ，给dom对象绑定的事件如click mouseover 某种意义上也是异步回调
+		//
+		//扩展： javascript中的回调函数 如下：
+		/*  function foo(callback){
+					var a = 1;
+					callback(a);
+				}
+				foo(function(a){
+					console.log(a);
+				})
+		*/
+		// 这种回调是同步回调，不会开启异步线程
+	</script>
+</body>
+</html>

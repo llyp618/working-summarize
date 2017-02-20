@@ -33,7 +33,7 @@
 
 		console.log(el.style.height);	// '' 行内样式未设置 则没有值
 
-		console.log(window.getComputedStyle(el,null).height); //400px; 带单位   IE9以上支持 
+		console.log(window.getComputedStyle(el,null).height); //400px; 带单位   IE9以上支持. IE9 以下 用el.currentStyle['height']
 
 		console.log(el.offsetHeight);  //480   包括padding border 
 

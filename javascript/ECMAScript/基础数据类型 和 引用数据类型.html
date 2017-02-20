@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//javascript 中的5种基础数据类型：
+			//Number,String,Boolean,Null,Undefined  
+		
+
+		//javascript 中的 引用数据类型 ：
+			//Object,Function,Date,Array,RegExp
+		
+		// 基础数据类型 数据的值存储在栈，是按值访问的，操作的是真实的值。
+		var a = '1';
+		var b = a ;  // 新建一个 b 变量 并 将 a的值赋给 b
+		a = '2';
+		console.log(b); // 1 
+
+		// 引用数据类型 数据的值存储在堆里，是按指针访问的，指针存储在栈里，操作的是指针。
+		var foo1 = { a : 1};
+		var foo2 = foo1; //将foo1的指针 赋给 foo2 两者指向同一个地址
+		foo1.a = 2;
+		console.log(foo2.a);  //2
+
+
+		
+		// 使用 typeof 来判断是否是基础类型 还是  引用类型 (Null特殊 返回object,Function特殊 返回function)
+		console.log( typeof 1 );					 //number        
+		console.log( typeof '1' );         //string
+		console.log( typeof undefined );   //undefined
+		console.log( typeof true );        //boolean
+		console.log( typeof null );        //object
+
+		console.log( typeof new Date());   //object
+		console.log( typeof {} );          //object
+		console.log( typeof /\s/ );        //object
+		console.log( typeof [1,2,3] );     //object
+		console.log( typeof function(){} );//function
+	</script>
+</body>
+</html>

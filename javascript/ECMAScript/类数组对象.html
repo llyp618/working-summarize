@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		/*
+			js 中 一直特殊的数据集合 类数组对象，具有数组中的下标且有长度length属性能够被遍历的数据集合。
+			不具有数组的其他方法 如slice shift pop push等,但能通过call apply调用数组原型的方法，
+			类似格式如下(一定要有length属性)：
+		 */
+		var arrayLike = {
+			0 : 'a',
+			1 : 'b',
+			2 : 'c',
+			length : 3
+		}
+
+		/*
+			常见的类数组对象：
+			1. 函数中的arguments,（最常见）
+			2. NodeList  : document.getElementsByTagName(''),document.getElementsByClassName()等等 返回的对象
+			3. StyleSheetList，
+			4. HTMLCollection
+			5. HTMLFormControlsCollection
+			6. HTMLOptionsCollection
+			7. HTMLAllCollection
+			8. DOMTokenList
+
+		 */
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 最有效的方法：Object.prototype.toString.call();
+		// 
+		console.log( Object.prototype.toString.call([1,2,3]) );     //[object Array]
+		console.log( Object.prototype.toString.call(1) );					  //[object Number]
+		console.log( Object.prototype.toString.call('1') );         //[object String]
+		console.log( Object.prototype.toString.call({}) );          //[object Object]
+		console.log( Object.prototype.toString.call(null) );        //[object Null]
+		console.log( Object.prototype.toString.call(/\s/) );        //[object RegExp]
+		console.log( Object.prototype.toString.call(undefined) );   //[object Undefined]
+		console.log( Object.prototype.toString.call(function(){}) );//[object Function]
+		console.log( Object.prototype.toString.call(true) );        //[object Boolean]
+		console.log( Object.prototype.toString.call(new Date()) );  //[object Date]
+
+
+		console.log("___________________")
+
+		// typeof
+		//
+		console.log( typeof 1 );					 //number        
+		console.log( typeof '1' );         //string
+		console.log( typeof undefined );   //undefined
+		console.log( typeof true );        //boolean
+		console.log( typeof null );        //object
+
+		console.log( typeof new Date());   //object
+		console.log( typeof {} );          //object
+		console.log( typeof /\s/ );        //object
+		console.log( typeof [1,2,3] );     //object
+		console.log( typeof function(){} );//function
+	</script>
+</body>
+</html>

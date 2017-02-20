@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// isPrototypeOf 检测一个对象是否在另一个对象的原型链上   Object.getPrototypeOf() 获取上一级原型
+		// hasOwnProperty  判断一个对象是否有某个可枚举的私有属性， 原型链继承的不算。
+
+		var person = {
+			sex : 'man'
+		}
+
+		var male = {};
+		male.__proto__ = person;           // 原型链都是通过__proto__传递的 （目前chrome firfox等浏览器实现），并不是prototype，prototype只是构造函数上一个属性。
+ 
+
+		function Boy(name,age){            //构造函数实现原型链继承，具体看原型链继承.html
+			this.name = name;
+			this.age = age;
+		}
+		Boy.prototype = male;
+
+		var lyp = new Boy('lulu',25);
+
+		console.log(lyp.sex)
+		console.log(lyp.__proto__); //male
+		console.log(person.isPrototypeOf(lyp));  //true
+		console.log(male.isPrototypeOf(lyp));  //true
+		console.log(Object.getPrototypeOf(lyp) == male)  //true
+
+		console.log(lyp.hasOwnProperty('name'))  //true
+		console.log(lyp.hasOwnProperty('sex'))  //false
+	</script>
+</body>
+</html>

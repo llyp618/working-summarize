@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 原生ajax
+		// 所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。 IE5 和 IE6 使用 ActiveXObject
+		
+		// 如需向服务器发送请求，使用XMLHttpRequest对象的open()和send()方法
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET","serverApi.php",true);   //open(method,url,async)   method:GET或POST,url:文件在服务器上的位置，async:true(异步)或false(同步)
+		xhr.send();                             //send(string)  string:仅用于POST请求
+
+		// 如果通过GET方法发送信息，向URL 添加信息：
+		xhr.open("GET","serverApi.php?username=lu&age=18",true);
+		xhr.send();
+
+		//POST 请求
+		xhr.open("POST","serverApi.php",true);
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");  //向请求添加HTTP头，header:规定头名称，value:规定头的值
+		xhr.send("username=lu&password=123123");
+
+		// 服务器响应事件 
+		// 
+		// 
+		// 
+		// XMLHttpRequest对象三个重要属性 : 
+		// 一 : onreadystatechange事件，每当readyState改变时，就会触发onreadystatechange事件
+		// 
+		// 二 : readyState属性  存有XMLHttpRequest的状态信息。
+		//    0 : 请求未初始化
+		//    1 : 服务器连接已建立
+		//    2 : 请求已接受
+		//    3 : 请求处理中
+		//    4 : 请求已完成，且响应已就绪
+		//    
+		// 三 : status属性  返回状态 200:"ok" ; 404:未找到页面;
+		// 
+		// 当 readyState 等于 4 且状态为 200 时，表示响应已就绪：
+		xhr.onreadystatechange = function(){
+			if (xhr.readyState == 4 && xhr.status == 200){
+				console.log(xhr.responseText,xhr.responseXML)
+			}
+		}
+	</script>
+</body>
+</html>

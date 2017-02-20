@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+</head>
+<body>
+	<script>
+		// 页面加载时的事件
+		
+		// JS:
+	 
+			window.onload=function(){};
+
+		// JQUERY:
+			// jquery中常用的方法：
+			$(function(){});
+			// 等同于 
+			$(document).ready(function(){}); 
+
+
+		//jquery 以上都是监听dom结构加载完成后执行内部代码 而window.onload 则是在dom结构加载以及资源文件（如图片）加载完成后执行 ，执行顺序在dom结构加载之后。
+		
+
+
+
+		//简单实现document.ready:
+		
+		document.ready = function(callback){
+			if(document.addEventListener){
+				document.addEventListener('DOMContentLoaded',function(){                  //HTML5新增事件 DOMContentLoaded 监听dom文档加载完成事件
+					document.removeEventListener('DOMContentLoaded',arguments.callee,false);
+					callback();
+				});
+			}else if (document.attachEvent){
+				document.attachEvent('onreadystatechange',function(){
+					if(document.readyState == 'complete'){
+						document.detachEvent("onreadystatechange",arguments.callee);
+						callback();
+					}
+				});
+			}
+		}
+
+	</script>
+</body>
+</html>

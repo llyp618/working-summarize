@@ -3,23 +3,56 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
 </head>
+<style>
+	.red {
+		color: red;
+	}
+	.blue {
+		color: blue;
+	}
+</style>
 <body>
-	<div class="A">
-		
+	<div class="wrap must">
+		<input type="checkbox" > 11111
+		<input type="checkbox" > 11111
+		<input type="checkbox" > 11111
+		<input type="checkbox" > 11111
 	</div>
-	<span class="B">
-		
-	</span>
-	<span class="A B">
-		
-	</span>
-	<ol class="A">
-		
-	</ol>
+	<br>
+	<div class="wrap must">
+		<input type="checkbox" > 22222
+		<input type="checkbox" > 22222
+		<input type="checkbox" > 22222
+		<input type="checkbox" > 22222
+	</div>
+	<button id="btn" class="red">123123</button>
 	<script>
-		// 兼容getElementsByClassName
-		
+		function detectCheck(wrap,cb){
+			var wrap = wrap;
+			var hasChecked = wrap.find('input:checked');
+			if(hasChecked.length > 0) {
+				wrap.removeClass('must');
+			}
+			else {
+				wrap.addClass('must');
+			}
+			cb();
+		}
+
+		function buttonForbid(){
+			if($('.wrap').hasClass('must')){
+				$('#btn').attr('class','red');
+			}
+			else {
+				$('#btn').attr('class','blue');
+			}
+		}
+
+		$('input').change(function(){
+			detectCheck($(this).parents('.wrap'),buttonForbid);
+		})
 	</script>
 </body>
 </html>

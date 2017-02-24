@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		
+
+
+	/* 
+
+		## animation 基本格式：
+
+			animation:    name  duration   timing-function   delay     iteration-count       animation-direction      		   fill-mode                 play-state; 
+			
+			animation:    ani     2s            linear         1s      n(次数) | infinite    normal | alternate|reverse...   如forwards|backwards...    running | paused      ;
+
+	 	
+		## animation语法中各项介绍：
+
+			animation-name : 动画的名称 通过 @keyframes 来定义;
+			animation-duration: 动画的持续时间 ;
+			animation-timing-function:动画的执行函数 linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)  其中cubic-bezier 可以通过chrome等浏览器来模拟生成 很有用;
+			animation-delay: 动画延迟;
+			animation-iteration-count: 动画的执行次数  可以指定几次 n 或 设置无限次   n | infinite;
+			animation-direction : 动画的执行方向 normal | reverse | alternate | alternate-reverse | initial | inherit;
+			animation-fill-mode : 动画介绍或停止时的 的样式状态 ;  none | forwards | backwards | both | initial | inherit ;
+			animation-play-state : 动画的执行状态   running | paused;
+ 	 */
+
+
+	.active {
+		width: 20px;
+		height: 20px;
+		background: red;
+		animation-name: ani;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-delay: 1s;
+	}
+
+	@keyframes ani {
+		from {
+			transform: translate3d(0, 0, 0);
+		}
+
+		to {
+			transform: translate3d(100px, 0, 0);
+		}
+	}
+
+	</style>
+</head>
+<body>
+	<div id="box" class="active">
+		
+	</div>
+	<script>
+			
+		var oBox = document.getElementById('box');
+		// animation jsapi   (兼容性问题比较大 目前很少浏览器能用 )
+
+		// #访问css3动画各个属性 行内： window.getComputedStyle(oBox,null)[attr]
+		console.log(window.getComputedStyle(oBox,null).animationName)
+		console.log(window.getComputedStyle(oBox,null).animationDuration)
+		console.log(window.getComputedStyle(oBox,null).animationTimingFunction)
+		console.log(window.getComputedStyle(oBox,null).animationDelay)
+		console.log(window.getComputedStyle(oBox,null).animationIterationCount)
+		console.log(window.getComputedStyle(oBox,null).animationDirection)
+		console.log(window.getComputedStyle(oBox,null).animationFillMode)
+		console.log(window.getComputedStyle(oBox,null).animationPlayState)
+
+		// webkit
+		console.log(window.getComputedStyle(oBox,null).webkitAnimationName)
+		console.log(window.getComputedStyle(oBox,null).webkitAnimationDuration)
+		console.log(window.getComputedStyle(oBox,null).webkitAnimationTimingFunction)
+		console.log(window.getComputedStyle(oBox,null).webkitAnimationDelay)
+		console.log(window.getComputedStyle(oBox,null).webkitAnimationIterationCount)
+		console.log(window.getComputedStyle(oBox,null).webkitAnimationDirection)
+		console.log(window.getComputedStyle(oBox,null).webkitAnimationFillMode)
+		console.log(window.getComputedStyle(oBox,null).webkitAnimationPlayState)
+
+		// 可以通过 oBox.style[attr] 去访问和设置上述属性
+	
+		//  ##css3动画的事件：
+		
+
+		// webkit events
+			oBox.addEventListener("webkitAnimationStart", AnimationListener);      // 动画开始
+			oBox.addEventListener("webkitAnimationIteration", AnimationListener);  // 动画重新播放
+			oBox.addEventListener("webkitAnimationEnd", AnimationListener);        // 动画结束
+
+		// standard events
+			oBox.addEventListener("animationstart", AnimationListener);
+			oBox.addEventListener("animationiteration", AnimationListener);
+			oBox.addEventListener("animationend", AnimationListener);
+
+
+		function AnimationListener (e){
+			console.log(e.animationName,e.elapsedTime)
+		}
+
+
+	</script>
+</body>
+</html>

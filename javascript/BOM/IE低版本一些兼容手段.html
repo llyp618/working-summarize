@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+//1、获取页面卷去高度
+function scroll() {
+    return {
+        top: window.pageYOffset || document.documentElement.scrollTop ||  document.body.scrollTop || 0,
+        left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+    };
+}
+
+//2、获取dom样式
+function getStyle(obj, attr) {
+    if (window.getComputedStyle) {
+        return window.getComputedStyle(obj, null)[attr];
+    } else {
+        return obj.currentStyle[style];
+    }
+}
+
+//3、绑定事件点击事件
+if (x.addEventListener) {                             
+    x.addEventListener("click", myFunction);
+ } else if (x.attachEvent) {               
+    x.attachEvent("onclick", myFunction);
+ }
+
+//4、获取事件对象
+event = event || window.event;
+
+//5、获取元素内容
+function getInnerText(element) {
+  if (typeof element.innerText === "string") {
+      return element.innerText;
+  } else {
+      return element.textContent;
+  }
+}
+
+//6、设置元素内容
+function setInnerText(element, value) {
+  if (typeof element.innerText === "string") {
+      element.innerText = value;
+  } else {
+      element.textContent = value;
+  }
+}
+
+
+//7、获取鼠标距离页面左端和顶端距离
+function getPageX(event) {
+  //能力检测
+  if(event.pageX) {
+      return event.pageX;
+  }else {
+      return event.clientX + scroll().left;
+  }
+}
+
+function getPageY (event) {
+  if(event.pageY) {
+      return event.pageY;
+  }else {
+      return event.clientY + scroll().top;
+  }
+}
+
+//8、给任意对象绑定任意事件
+function addEvent(element, type, fn) {
+	//能力检测
+	if(element.addEventListener) {
+	    //支持addEventListener
+	    element.addEventListener(type, fn, false);
+	}else if(element.attachEvent) {
+	    //支持attachEvent
+	    element.attachEvent("on"+type, fn);
+	}else {
+	    element["on"+type] = fn;
+	    //btn.onclick = fn;
+	}
+}
+
+//9、给任意对象移除任意事件
+function removeEvent(element, type, fn) {
+  //能力检测
+  if (element.removeEventListener) {
+      element.removeEventListener(type, fn, false);
+  } else if (element.detachEvent) {
+      element.detachEvent("on" + type, fn);
+  } else {
+      element["on" + type] = null;
+  }
+}
+
+
+//10、阻止冒泡！
+function stopPropagation(event) {
+    //能力检测
+    if (event.stopPropagation) {
+        event.stopPropagation();
+    } else {
+        event.cancelBubble = true;
+    }
+}
+
+
+//11、获取页面可视宽高
+function client() {
+    return {
+        width:window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+        height:window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+    }
+}
+
+
+</script>
+</body>
+</html>

@@ -13,11 +13,20 @@
 	</style>
 </head>
 <body>
-	2
+	<div id="box1" style="width:200px;height:200px;overflow: scroll">
+	 <div style="width:202px;height: 1px;">
+	 	
+	 </div>
+	</div>
+
+
+	
 	<script type="text/javascript">
+
 		console.log(document.body.clientWidth)   //600  网页可见宽度  即设置的body宽度
 
 		console.log(document.body.offsetWidth)   //602
+
 
 		console.log(document.documentElement.clientWidth)     // 1920 document 文档宽度，始终与浏览器窗口一样
 
@@ -32,6 +41,7 @@
 		console.log(document.documentElement.scrollTop,document.body.scrollTop,window.pageYOffset);  // 0 340 340 ; *滚动后测试*  chrome测试结果
 
 		
+		console.log(document.getElementById('box1').scrollWidth)   //202 滚动宽度 ？
 	</script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<span id="box">
+		
+	</span>
+	<script>
+		/*
+			//DOM1级 定义了一个Node接口 DOM中所有节点都由Node实现
+
+			只记重要几个：
+
+			节点类型         nodeName    nodeValue     nodeType      Named Constant          
+
+			Element         元素名       null            1            ELEMENT_NODE
+			Attr            属性名称     属性值           2            ATTRIBUTE_NODE
+			Text            #text       节点的内容       3             TEXT_NODE
+			Comment         #comment    注释文本         8             COMMENT_NODE
+			Document        #document   null            9							DOCUMENT_NODE
+			DocumentType    文档类型名称  null           10							DOCUMENT_TYPE_NODE
+
+
+
+		 */
+
+		 console.log(document.getElementById('box').nodeName);
+	</script>
+</body>
+</html>

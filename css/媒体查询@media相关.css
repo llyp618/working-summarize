@@ -1,0 +1,46 @@
+/* 常用尺寸 */
+
+/* 宽屏 */
+@media only screen and (min-width: 1200px){
+
+}
+/* 中等屏幕 */
+@media only screen and (min-width:960px) and (max-width: 1199px){
+
+}
+
+/* 平板 */
+@media only screen and (min-width:768px) and (max-width:959px){
+
+}
+/* 手机 */
+@media only screen and (min-width: 480px) and (max-height: 767px){
+
+}
+
+@media only screen and (max-width: 470px){
+
+}
+
+	/*
+		也可以在link标签设置  <link media="screen and (min-width:1200px)" /> 加载指定css文件
+	 */
+
+/* ------------------------------ */
+
+
+/* 横竖屏判断 */
+
+@media all and (orientation : landscape) { 
+
+h2{color:red;}/*横屏时字体红色*/
+
+} 
+
+@media all and (orientation : portrait){ 
+
+h2{color:green;}/*竖屏时字体绿色*/
+
+} 
+
+/* ------------------------------ */

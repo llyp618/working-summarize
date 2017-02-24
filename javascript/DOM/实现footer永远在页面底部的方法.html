@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		html,body {
+			height: 100%;    /* 必须 */
+		}
+		.page {
+			min-height: 100%;   /* 必须 */
+			position: relative;  /* 必须 */
+
+			height: auto !important;   /* 兼容IE6 */
+			height: 100%;
+		}
+		.footer {
+			height: 60px;          /* 必须 */
+			background: #ccc;
+			position: absolute;     /* 必须 */
+			width: 100%;            /* 必须 */
+			left: 0;                 /* 必须 */
+			bottom: 0;               /* 必须 */
+		}
+		.content {
+			padding-bottom: 60px;   /* 和footer一样高，为footer留出空间 */  /* 必须 */
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div class="header">
+			头部
+		</div>
+		<div class="content">
+			主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容<br>主体内容111111<br>
+		</div>
+		<div class="footer">
+			页脚
+		</div>
+	</div>
+</body>
+</html>

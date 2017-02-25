@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.test_demo {
+			text-overflow: ellipsis;
+			/*clip | ellipsis   clip  表示剪切  ellipsis 表示显示省略标记*/
+			overflow: hidden;
+			white-space:nowrap;   
+			/*  normal | pre |  nowrap | pre-wrap | pre-line | inherit*/
+			width:200px;
+			background:#ccc;
+		}
+		/*
+			text-overflow只是用来说明文字溢出时用什么方式显示，
+			要实现溢出时产生省略号的效果，还须定义强制文本在一行内显示（white-space:nowrap）及溢出内容为隐藏（overflow:hidden），
+			只有这样才能实现溢出文本显示省略号的效果;
+		*/
+	</style>
+</head>
+<body>
+	<div class="test_demo">
+	  超酷的IT技术学习平台（我是省略号）
+	</div>
+</body>
+</html>

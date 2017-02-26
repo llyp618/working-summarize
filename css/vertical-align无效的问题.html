@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		.demo {
+			vertical-align: /*
+				baseline: 默认 ，元素放置在父元素的文字基线上;
+				sub: 垂直对齐文本的下标;
+				super: 垂直对齐文本的上标;
+				top:把元素的顶端与行中最高元素的顶端对齐;
+				text-top:把元素的顶端与行中最高元素的顶端对齐;
+				middle:把此元素放置在父元素的中部;
+				bottom:把元素的顶端与行中最低的元素的顶端对齐;
+				text-bottom:把元素的底端与父元素字体的底端对齐;
+				length: 使用px rem等来排列;
+				%: 使用 line-height属性的百分比值来排列此元素，允许负值;
+				inherit:;
+			*/;
+
+			/* 
+				####### 注意 1：vertial-align 只能应用于inline水平 以及 table-cell 元素
+			*/
+
+			/* 
+				####### 注意 2：除了table-cell(td), 元素vertial-align 离不开line-height ,通常有文字的情况下，默认父元素就有line-height属性，
+							  如果没有文字，图片的vertial-align无效，因为它是相对于line-height的 而不是相对有父元素的height的；
+			*/
+			/* 
+				####### 注意 3：table-cell元素 如 td vertical-align 要写在td标签里  如 <td style="vertical-align:middle"><img /></td>
+			*/
+
+			/* 
+				####### 扩展 ：文档流中 行内元素之间默认都是以	“内部最以后一行文字或其他元素基线baseline”	对齐的，
+								并不是底部，但是如果行内元素内部无文字 或其他带基线的元素 则该元素基线会沉到margin底部，
+								在与其他元素基线位置不同的情况下对齐基线，就会导致元素之间错位。
+			*/
+		}
+			
+		img {
+		}
+	</style>
+</head>
+<body>
+	<div style="margin-top:100px; background: #ccc;/* height:300px; line-height: 300px;*/">
+		<img id="img" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3822996092,1424153729&fm=23&gp=0.jpg"  alt="">
+		你好你好！<!-- <sup>上标</sup><sub>下标</sub> -->
+	</div>
+	<div style="">
+		<select name="" id="verTical">
+			<option value="baseline">baseline</option>
+			<option value="sub">sub</option>
+			<option value="super">super</option>
+			<option value="top">top</option>
+			<option value="middle">middle</option>
+			<option value="bottom">bottom</option>
+			<option value="text-top">text-top</option>
+			<option value="text-bottom">text-bottom</option>
+			<option value="10px">10px</option>
+			<option value="-10px">-10px</option>
+			<option value="50%">50%</option>
+			<option value="-50%">-50%</option>
+		</select>
+	</div>
+	<script>
+		var oSelect = document.getElementById('verTical');
+		var oImg = document.getElementById('img');
+		oSelect.onchange = function(e){
+			oImg.style.verticalAlign = this.value;
+		}
+	</script>
+	
+	<p style="margin-top:100px;">table-cell vertiacal-align表现</p>
+	<div style="display: table-cell; height:300px; width:300px; background:#ccc; vertical-align: middle;text-align:center;">
+		<img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3822996092,1424153729&fm=23&gp=0.jpg" alt="">
+	</div>
+
+	<p style="margin-top:100px;">实现文字列表和图片的左右对齐排列</p>
+	<div style="background:#ccc;">
+		<ul style="display: inline-block; width:100px; border:1px solid #000; vertical-align: middle;">
+			<li>你好</li>
+			<li>你好</li>
+			<li>你好</li>
+			<li>你好</li>
+		</ul>
+		<img style="vertical-align: middle;" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3822996092,1424153729&fm=23&gp=0.jpg" alt="">
+	</div>
+
+
+
+	<p style="margin-top:100px;">前一个span基线在margin底部 后一个span 基线接近文字底部 两者对齐</p>
+	<div style="background:#ccc;">
+		<span style="display: inline-block; height:100px; width:100px; border:1px solid #000;"></span>
+		<span style="display: inline-block; height:100px; width:100px; border:1px solid #000;">123123</span>
+	</div>
+
+</body>
+</html>

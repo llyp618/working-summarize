@@ -3,56 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
 </head>
-<style>
-	.red {
-		color: red;
-	}
-	.blue {
-		color: blue;
-	}
-</style>
 <body>
-	<div class="wrap must">
-		<input type="checkbox" > 11111
-		<input type="checkbox" > 11111
-		<input type="checkbox" > 11111
-		<input type="checkbox" > 11111
-	</div>
-	<br>
-	<div class="wrap must">
-		<input type="checkbox" > 22222
-		<input type="checkbox" > 22222
-		<input type="checkbox" > 22222
-		<input type="checkbox" > 22222
-	</div>
-	<button id="btn" class="red">123123</button>
 	<script>
-		function detectCheck(wrap,cb){
-			var wrap = wrap;
-			var hasChecked = wrap.find('input:checked');
-			if(hasChecked.length > 0) {
-				wrap.removeClass('must');
+		var plus = function (ary){
+			var result = 0;
+			for (var i = 0; i < ary.length; i++){
+				result += ary[i];
 			}
-			else {
-				wrap.addClass('must');
+			return result;
+		};
+
+		// 代理函数 用于判断传入参数是否合理
+
+		var proxyPlus = function(ary){
+			for(var i = 0; i < ary.length; i++){
+				if(typeof ary[i] != 'number') {
+					console.log('need number!');
+					return false;
+				}
 			}
-			cb();
+			return plus(ary);
 		}
 
-		function buttonForbid(){
-			if($('.wrap').hasClass('must')){
-				$('#btn').attr('class','red');
-			}
-			else {
-				$('#btn').attr('class','blue');
-			}
-		}
-
-		$('input').change(function(){
-			detectCheck($(this).parents('.wrap'),buttonForbid);
-		})
+		console.log(proxyPlus(1,2,3,4));
 	</script>
 </body>
 </html>

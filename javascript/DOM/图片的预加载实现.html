@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 
+		网页开发中免不了大图片的出现，如果网速太差，会导致图片未加载之前的空白，我们可以通过loading.gif 菊花图来实现
+		图片加载期间的过渡，主要依靠 new Image()来实现
+
+
+	 -->
+	 <img alt="">
+	 <img alt="">
+	 <img alt="">
+	 <img alt="">
+	<script>
+			// 预加载 函数
+			var preloadImg = function(src,callback){
+				var img = new Image(),wrongImageSrc = './wrong.jpg';
+				img.src = src;
+
+				if(img.complete){        //如果图片已经存在于浏览器缓存，直接调用回调函数；
+					callback(img.src);
+					return ;
+				}
+
+				img.onload = function(){
+					img.onload = null;
+					callback(img.src);
+				}
+				img.onerror = function(){
+					img.onload = null;
+					callback(wrongImageSrc);
+				}
+			};
+			// 上述函数实现预加载的功能，如果需要加载多个图片：
+			
+			var multiplePreload = function(srcAry,callback){
+				var n = srcAry.length,
+						i = 0,
+						srcCache = [];
+
+				preloadImg(srcAry[i],queueLoad);
+
+				function queueLoad(src){
+					i++;
+					srcCache.push(src);
+					if (i == n ) {
+						callback(srcCache);   //所有图片加载完后执行回调
+						return false;
+					};
+					preloadImg(srcAry[i],queueLoad);  //递归下载下一张图片
+				}
+			};
+
+			multiplePreload([
+				'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488783938&di=4964c916584e389361c7b7ac301e039c&imgtype=jpg&er=1&src=http%3A%2F%2Fc.hiphotos.baidu.com%2Flvpics%2Fh%3D800%2Fsign%3Df08ecc016c63f624035d3403b745eb32%2Fa2cc7cd98d1001e93b905337bf0e7bec54e7975d.jpg',
+				'http://img5.imgtn.bdimg.com/it/u=1706903679,997366634&fm=23&gp=0.jpg',
+				'http://img4.imgtn.bdimg.com/it/u=3268088593,2113798681&fm=23&gp=0.jpg',
+				'http://img2.imgtn.bdimg.com/it/u=347233787406,653687690&fm=23&gp=0.jpg'
+				],function(srcCache){
+					var aImgs = document.getElementsByTagName('img');
+					for (var i = 0 ; i < aImgs.length ; i++){
+						aImgs[i].src = srcCache[i];
+					}
+				})
+	</script>
+</body>
+</html>

@@ -21,7 +21,7 @@
 
 			animation-name : 动画的名称 通过 @keyframes 来定义;
 			animation-duration: 动画的持续时间 ;
-			animation-timing-function:动画的执行函数 linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)  其中cubic-bezier 可以通过chrome等浏览器来模拟生成 很有用;
+			animation-timing-function:动画的执行函数 linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)  | steps() 其中cubic-bezier 可以通过chrome等浏览器来模拟生成 很有用;
 			animation-delay: 动画延迟;
 			animation-iteration-count: 动画的执行次数  可以指定几次 n 或 设置无限次   n | infinite;
 			animation-direction : 动画的执行方向 normal | reverse | alternate | alternate-reverse | initial | inherit;
@@ -30,6 +30,14 @@
  	 */
 
 
+	/* 
+		animation-timing-function 有一个特殊的阶跃函数steps(),按照指定的帧执行动画。 具体理解看这 http://www.cnblogs.com/aaronjs/p/4642015.html
+		steps(3,start) 解释： 前一个参数 3 是设置帧与帧之间动画过渡等分成3步，如果是 1 就是1步，直接跳到第二帧。
+												 后一个参数可以是start 和 end ,start指这一帧动画结束时以下一帧动画开始的画面展示，end指这一帧动画结束时以这一帧动画结束的画面展示。，，，
+	
+
+
+	 */
 	.active {
 		width: 20px;
 		height: 20px;

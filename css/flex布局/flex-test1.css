@@ -1,0 +1,146 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+h3 {
+	margin-top: 20px;
+	margin-left: 20px;
+	color: #C04544;
+	clear: both;
+}
+div {
+	float: left;
+}
+div.list {
+	overflow: hidden;
+	display: block;
+	float: none;
+}
+section {
+	border: 1px solid #ccc;
+	margin-left: 20px;
+	width: 202px;
+	height: 202px;
+	display: flex;
+}
+span {
+	background: #949B9B;
+	border: 1px solid #232525;
+	width: 40px;
+	height: 40px;
+}
+
+/*justify-content  项目按照主轴对齐方式*/
+.a-box1 { 
+	justify-content: flex-start;      /*默认*/
+}
+
+.a-box2 {
+	justify-content: center;
+}
+
+
+.a-box3 {
+	justify-content: flex-end;
+}
+
+.a-box4 {
+	justify-content: space-between;
+}
+
+.a-box5 {
+	justify-content: space-around;
+}
+
+ /*align-items 定义项目在 交叉轴cross axis 上如何对齐*/
+
+.b-box1 {
+	align-items: flex-start;
+}
+
+.b-box2 {
+	align-items: center;
+}
+
+.b-box3 {
+	align-items: flex-end;
+}
+
+.b-box4 {
+	align-items: baseline;
+}
+
+.b-box5 {
+	align-items: stretch; /* 默认 如果span没有高度 将占据整个容器的高*/
+}
+.b-box5  span {
+	height: auto;
+}
+
+/*flex-direction决定主轴方向*/
+
+.c-box1 {
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.c-box2 {
+	flex-direction: row-reverse;
+	justify-content: flex-start;
+}
+
+.c-box3 {
+	flex-direction: column;
+	justify-content: flex-start;
+}
+.c-box4 {
+	flex-direction: column-reverse;
+	justify-content: flex-start;
+}
+.c-box5 {
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
+
+/* #align-content 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用  跟跟justify-content 类似 justify-content横向 align-content竖向*/
+
+.d-box1 {
+	flex-wrap: wrap;
+	align-content: space-between;
+}
+
+.d-box2 {
+	flex-wrap: wrap;
+	align-content: space-around;
+}
+.d-box3 {
+	flex-wrap: wrap;
+	align-content: flex-start;
+}
+.d-box4 {
+	flex-wrap: wrap;
+	align-content: flex-end;
+}
+.d-box5 {
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-content: flex-end;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

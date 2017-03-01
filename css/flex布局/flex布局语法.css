@@ -1,0 +1,124 @@
+
+#兼容性：
+
+	弹性布局 2009年 提出  各个阶段命名也不一样：
+	- W3C 2009年第1次草案：[display:box;]
+	- W3C 2011年第2次草案：[display:flexbox | inline-flexbox;]
+	- W3C 2012年第5次草案及以后的候选推荐标准：[display:flex | inline-flex;]
+		
+	兼容性写法
+	.box {
+		display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+		display: -moz-box; /* Firefox 17- */ 
+		display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */ 
+		display: -moz-flex; /* Firefox 18+ */ 
+		display: -ms-flexbox; /* IE 10 */ 
+		display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+	}
+
+#基本概念：
+	采用Flex布局的元素 称为 Flex容器，，子元素的float,clear,vertical-align 属性将失效,它们自动成为容器成员 flex item;
+	容器存在两根轴：水平主轴(main axis)和垂直交叉轴(cross axis)。
+	主轴开始位置（与边框交叉点）叫做 (main start),结束位置叫做(main end); 交叉轴的开始位置叫做(cross start),结束位置叫做(cross end);
+	项目默认沿主轴排列。单个项目占据的主轴空间叫做(main size),占据的交叉轴空间叫做(cross size);
+
+#容器box属性： 
+	以下六个属性设置在容器上：
+	flex-direction , flex-wrap , flex-flow , justify-content , align-items , align-content
+
+	#flex-direction 决定主轴的方向
+		* row : 主轴为水平方向，起点在左端。
+		* row-reverse : 主轴为水平方向，起点在右端。
+		* column : 主轴为垂直方向，起点在上沿。
+		* column-reverse : 主轴为垂直方向 起点在下沿。
+		.box {
+			display: flex;
+			flex-direction: row | row-reverse | column | column-reverse;
+		}
+
+	#flex-wrap 决定换行
+		* nowrap : 不换行。
+		* wrap : 换行 第一行在上方。
+		* wrap-reverse : 换行 第一行在下方。
+		.box {
+			display: flex;
+			flex-wrap: nowrap | wrap | wrap-reverse;
+		}
+	
+	#flex-flow   flex-direction 属性 和 flex-wrap属性的简写形式
+		.box {
+			display: flex;
+			flex-flow: row nowrap;
+		}
+
+	#justify-content 定义项目在 主轴main axis 上的对齐方式。
+		* flex-start : 左对齐。
+		* flex-end : 右对齐。
+		* center : 居中 
+		* space-between : 两端对齐，项目之间的间隔都相等。
+		* space-around : 每个项目两侧的间隔相等。所以，项目之间的间隔比项目和边框的间隔大一倍
+		.box {
+			display: flex;
+			justify-content: flex-start | flex-end | center | space-between | space-around;
+		}
+
+	#align-items 定义项目在 交叉轴cross axis 上如何对齐。
+		* flex-start : 交叉轴的起点对齐。
+		* flex-end : 交叉轴的终点对齐。
+		* center : 交叉轴的中点对齐。
+		* baseline : 项目的第一行文字基线对齐。
+		* strenth（默认）: 如果项目未设置高度或设为auto ,将占满整个容器的高度。
+		.box {
+			display: flex;
+			align-items: flex-start | flex-end | center | baseline | stretch;
+		}
+	
+	#align-content 定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+		* flex-content : 与交叉轴起点对齐。
+		* flex-end : 与交叉轴的终点对齐。
+		* center : 与交叉轴的中点对齐。
+		* space-between : 与交叉轴两端对齐，轴线之间的间隔平均分布。
+		* space-around : 每根轴线两侧的间隔都相等，所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+		* strenth （默认值）: 轴线占据整个交叉轴。
+
+#项目item属性 
+	以下6个属性设置在项目上。
+	order , flex-grow , flex-shrink , flex-basis , flex , align-self 
+
+	#order 定义项目的排列顺序  数值越小 排列越靠前 默认为0 
+		.item {
+			order: 0 | <int>; /*1,2,3...*/
+		}
+
+	#flex-grow 
+		定义项目的放大比例 默认为0 如果所以项目的flex-grow属性都为1 则它们将等分空间 ，如果一个项目flex-grow属性为2
+		其他项目都为1 则前者占据的空间将比其他项多一倍。
+		.item {
+			flex-grow: 0 | <number>;
+		}
+
+	#flex-shrink 
+		定义项目的缩小比例 默认为1  如果所有项目的flex-shrink都为1 当空间不足事，都等比例缩小，如果一个项目的flex-shrink属性为0
+		其他项目都为1 则空间不足时，前者不缩小。
+		.item {
+			flex-shrink: 1 | <number>;
+		}
+	#flex-basis 定义了在分配多余空间之前，项目占据的主轴空间main size   默认 auto  可以设为固定的如200px空间
+		.item {
+			flex-basis: auto | <length>  ; 
+		}
+	#flex 是flex-flow flex-shrink flex-basis 的简写。 默认：0 1 auto;
+	  .item {
+			 flex: 0 1 auto ;
+	  }
+	#align-self 属性允许单个项目有与其他项目不一样的对齐方式，可以覆盖容器的align-items属性。
+    .item {
+      align-self: auto | flex-start | flex-end | center | baseline | stretch;
+    }
+
+
+
+
+
+
+

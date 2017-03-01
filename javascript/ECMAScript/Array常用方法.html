@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// Array 是javascript的一种数据类型，属于引用数据类型 有很多实用的方法如下：
+
+			//1: concat() 连接两个或更多数组，并返回结果         
+			var ary = [1,2,3,4,5,6,7];
+			var newAry = ary.concat([8,9]);   // 也可以 ary.concat(8,9);
+			console.log(newAry)
+
+			//2: join() 把数组的所有元素放入一个字符串，通过指定的分隔符分隔。  ####
+			var ary = [1,2,3,4,5,6,7];
+			var str = ary.join(';');
+			console.log(str);
+
+			//3: pop() 删除并返回数组的最后一个元素  会改变原数组           ####
+			var ary = [1,2,3,4];
+			var n = ary.pop();
+			console.log(n,ary); // 4 [1,2,3]
+
+			// 4: push() 向数组的末尾添加一个或多个元素，返回新长度  会改变原数组    ####
+			var ary = [1,2,3,4];
+			var i = ary.push(1,2,3);
+			console.log(i,ary) //7 [1,2,3,4,1,2,3]
+
+			
+			// 5:shift() 删除并返回数组的第一个元素，会改变原数组          ####
+			var ary = [1,2,3,4];
+			var n = ary.shift();
+			console.log(n,ary);	//1 [2,3,4]
+
+
+			// 6:unshift() 向数组的开头添加一个或更多元素，返回新长度,会改变原数组   ####
+			var ary = [1,2,3,4];
+			var i = ary .unshift(0,0,0);
+			console.log(i,ary) //7 [0,0,0,1,2,3,4]
+			
+
+			// 7:slice(start,end) 从数组返回选定的数组 ,包含start下标的值,不会改变原数组 ###
+			var ary = [1,2,3,4];
+			var n = ary.slice(1,3);
+			console.log(n,ary); // [2,3]  [1,2,3,4]
+
+			// 8:sort()  排序
+			
+			// 9:splice(start,howmany,item1,...,itemX) 删除元素并向数组添加新元素 返回的是被删除的元素数组 会改变原数组。 ###
+			var ary = [1,2,3,4,5];
+			var n = ary.splice(2,2,10);
+			console.log(n,ary);  // [3,4]  [1,2,10,5]
+
+			// 10:reverse() 颠倒数组顺序
+		
+		// ES5 新增的Array方法  ,大胆的用吧  IE6-IE8不支持
+			
+			// 1: forEach(function(value,index,array){})     value 值  index 索引 array 数组本身   无返回值;
+			
+			
+			// 2: map(function(value,index,array){})         映射 对每个值处理，返回一个相同长度的数组，如果回调函数没有返回 ，则返回数组都是undefined
+			var ary = [1,2,3];
+			console.log(ary.map(function(v){return v+v}));   // [2,4,6]
+
+
+			// 3:filter(function(value,index,array){});       通过制定规则过滤数组,返回数组
+			var ary = [1,'2','3'];
+			console.log(ary.filter(function(v,i,ary){
+				return typeof v == 'number';
+			}))                                              //[1]
+
+			// 4:some(function(value,index,array){});       //判断数组中是否有满足条件的值 有则返回true
+			var ary = [1,2,3];
+			console.log(ary.some(function(v){
+				return v > 2;
+			}))
+
+			// 5:every(function(value,index,array){});      //判断数组中所有值是否满足条件 有一个不满足就返回false
+			
+			// 6:indexOf(v,start)                  // 搜索数组某个值的下标 start表示从哪里开始搜  默认0 
+			var ary = [1,2,3];
+			console.log(ary.indexOf(2))  //1
+
+			// 7:lastIndexOf(v,start)            // 反向搜索   start默认array.length-1
+			var ary = [1,2,3];
+			console.log(ary.lastIndexOf(3,1))  // -1
+
+
+			// 8:reduce(function(previous,current,index,array){})   //迭代
+			var ary = [1,2,3];
+			ary.reduce(function(previous,current){        //6	
+				return previous+current;
+			});
+
+			//9: reduceRight(function(){})    //反向迭代
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

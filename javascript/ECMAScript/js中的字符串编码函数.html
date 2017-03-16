@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+		
+			## javascript中有三个可以对字符串编码的函数 以及对应的解码函数。分别是：
+			
+			1: escape()               ->    unescape()
+			2: encodeURI()            ->    decodeURI()
+			3: encodeURIComponent()   ->    decodeURIComponent()     
+			
+			## 其编码行为 会根据网页的编码决定  比如 UTF-8  GB2312 是不同的 （meta中设置）
+		 */
+
+
+		 	/*
+		 		
+		 		1: escape(string)   -> unescape()
+
+		 			escape方法返回一个字符的Unicode编码值，不能直接用于URL编码，这个函数已经不提倡使用了。
+		 			该方法不会对ASCII字母和数字进行编码，也不会对下面这些ASCII表单符号进行编码：* @ - _ + . / 。其他所有的字符都会被转义序列替换。 
+		 	 */
+		 	console.log(escape('你好!()/'))   //%u4F60%u597D%21%28%29/
+
+
+		 	/*
+		 		2:encodeURI(string)    -> decodeURI()
+
+		 			encodeURI() 针对URL进行编码,该方法不会对ASCII字母和数字进行编码,除了常见的符号以外，对其他一些在网址中有特殊含义的符号“; / ? : @ & = + $ , #”，也不进行编码。
+
+		 	 */
+		 	console.log(encodeURI("https://www.baidu.com/api?a=你好&b=我好!"))   
+		 	//https://www.baidu.com/api?a=%E4%BD%A0%E5%A5%BD&b=%E6%88%91%E5%A5%BD!
+		 	
+
+
+		 	/*
+		 		3:encodeURIComponent()   -> decodeURIComponent()
+
+		 		该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
+		 		请注意 encodeURIComponent() 函数 与 encodeURI() 函数的区别之处，前者假定它的参数是 URI 的一部分（比如协议、主机名、路径或查询字符串）。因此 encodeURIComponent() 函数将转义用于分隔 URI 各个部分的标点符号。
+			
+		 		其实就是还能转义url中的其他字符 : // ？等等， 当url本身就是参数时，需要对其转义 否则跳转会出问题
+			 	encodeURIComponent 主要应用于 url中的query查询部分编码 即问号后面的参数 
+		 	 */
+
+		 	console.log(encodeURIComponent("https://www.baidu.com/api?a=你好&b=我好!()"))   
+			//https%3A%2F%2Fwww.baidu.com%2Fapi%3Fa%3D%E4%BD%A0%E5%A5%BD%26b%3D%E6%88%91%E5%A5%BD!()
+			
+		 	var aUrl = "https://www.test.com/api";
+		 	var paramUrl = "https://baidu.html";
+		 	document.onclick = function(){
+		 		window.location.href = aUrl + '?url=' +  encodeURIComponent(paramUrl);
+		 	}
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

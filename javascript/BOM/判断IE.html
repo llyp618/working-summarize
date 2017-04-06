@@ -33,6 +33,14 @@
 			}
 		}
 
+		/* 3 */ 
+		//ie11 userAgent没有 msie字段，如果需要判断ie11 则：
+		var isIE = (function(){ //ie版本
+	    var agent = navigator.userAgent.toLowerCase();
+	    return (!!window.ActiveXObject || "ActiveXObject" in window) ? (
+	      (agent.match(/msie\s(\d+)/) || [])[1] || '11' //由于ie11并没有msie的标识
+	    ) : false;
+	  })();
 	</script>
 </body>
 </html>

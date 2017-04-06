@@ -3,28 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style type="text/css" media="screen">
-		.box1 {
-			background-color: red;
-			transition: all 1s linear;
-			width: 0;
-			height: 0;
-		}
-		.box1.active {
-			display: block;
-			height: 200px;
-			width: 200px;
-		}
-	</style>
 </head>
 <body>
-	<div id="box1" class="box1">
-		1
-	</div>
 	<script>
-	document.onclick = function(){
-		document.getElementById('box1').className = "box1 active";
-	}
+	console.log(document.cookie)
+		document.cookie = "name=1"
+		document.cookie = "pw = 2"
+		
+	console.log(document.cookie)
 	</script>
 </body>
 </html>
